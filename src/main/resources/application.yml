@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: single-provider  # 应用程序名称，后面会在消费者中用到
+  freemarker:
+    prefer-file-system-access: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/autoinsy_manager?characterEncoding=utf8&useSSL=false&autoReconnect=true&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 801230
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    show-sql: true
+    database: mysql
+    open-in-view: true
+
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: eureka-center
+    appname: 注册中心
+  client:
+    registerWithEureka: false # 单点的时候设置为 false 禁止注册自身
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:3000/eureka
+  server:
+    enableSelfPreservation: false
+    evictionIntervalTimerInMs: 4000
+
