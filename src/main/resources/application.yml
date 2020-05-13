@@ -25,7 +25,7 @@ server:
 eureka:
   instance:
     hostname: eureka-center
-    appname: 注册中心
+    appname: autoinsy-eureka-center
   client:
     registerWithEureka: false # 单点的时候设置为 false 禁止注册自身
     fetchRegistry: false
